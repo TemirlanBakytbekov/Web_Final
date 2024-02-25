@@ -1,0 +1,190 @@
+<!-- product.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/"><img src="/logo-removebg-preview.png" alt="" width="50px" class="logo"></a>
+    
+      <form action="/search" method="GET">
+        <input type="text" name="q" placeholder="Search products...">
+        <button type="submit">Search</button>
+      </form>
+      <ul>
+        <li><a href="/login"><h4>Login</h4></a></li>
+        <li><a href="/register"><h4>Register</h4></a></li>
+      </ul>
+      <div id="google_translate_element"></div> 
+     
+    </nav>
+  </header>
+    <div class="container-fluid mt-5">
+        <!-- Carousel -->
+        <center><h2>Popular</h2></center>
+        <div id="telephoneCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <% productData.filter(product => product.category === 'smartphones').forEach((product, index) => { %>
+                    <li data-target="#telephoneCarousel" data-slide-to="<%= index %>" <% if (index === 0) { %>class="active"<% } %>></li>
+                <% }); %>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <% productData.filter(product => product.category === 'smartphones').forEach((product, index) => { %>
+                    <div class="item <% if (index === 0) { %>active<% } %>">
+                        <img src="<%= product.thumbnail %>" alt="<%= product.title %>">
+                        
+                            <h3><%= product.title %></h3>
+                            <p><%= product.description %></p>
+                            <p>Price: $<%= product.price %></p>
+                       
+                    </div>
+                <% }); %>
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#telephoneCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#telephoneCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- End Carousel for Telephones -->
+        
+            <section class="product-section">
+       
+              <div class="categories">      
+                <div class="vl"></div>
+                <h2>Telephones</h2>
+              </div>
+              <div class="product-grid">
+                <% productData.forEach(product => { %>
+                  <% if (product.category === 'smartphones') { %>
+                    <div class="product">
+                      <img src="<%= product.thumbnail %>" alt="<%= product.title %>">
+                      <h3><%= product.title %></h3>
+                      <p><%= product.description %></p>
+                      <p>Price: $<%= product.price %></p>
+                      <!-- Add more product details here as needed -->
+                    </div>
+                  <% } %>
+                <% }); %>
+              </div>
+            </section>
+<!-- Telephones section -->
+  <hr>
+  <!-- Laptops section -->
+  <section class="product-section">
+    <div class="categories">
+      <div class="vl"></div>
+      <h2>Laptops</h2>
+    </div>
+    
+    <div class="product-grid">
+      <% productData.forEach(product => { %>
+        <% if (product.category === 'laptops') { %>
+          <div class="product">
+            <img src="<%= product.thumbnail %>" alt="<%= product.title %>">
+            <h3><%= product.title %></h3>
+            <p><%= product.description %></p>
+            <p>Price: $<%= product.price %></p>
+            <!-- Add more product details here as needed -->
+          </div>
+        <% } %>
+      <% }); %>
+    </div>
+  </section>
+  
+  <!-- Fragrances section -->
+  <hr>
+  <section class="product-section">
+    <div class="categories">
+      <div class="vl"></div>
+      <h2>Fragrances</h2>
+    </div>
+    <div class="product-grid">
+      <% productData.forEach(product => { %>
+        <% if (product.category === 'fragrances') { %>
+          <div class="product">
+            <img src="<%= product.thumbnail %>" alt="<%= product.title %>">
+            <h3><%= product.title %></h3>
+            <p><%= product.description %></p>
+            <p>Price: $<%= product.price %></p>
+            <!-- Add more product details here as needed -->
+          </div>
+        <% } %>
+      <% }); %>
+    </div>
+  </section>
+  
+  <!-- Skincare section -->
+  <hr>
+  <section class="product-section">
+    <div class="categories">
+      <div class="vl"></div>
+      <h2>Skincare</h2>
+    </div>
+    <div class="product-grid">
+      <% productData.forEach(product => { %>
+        <% if (product.category === 'skincare') { %>
+          <div class="product">
+            <img src="<%= product.thumbnail %>" alt="<%= product.title %>">
+            <h3><%= product.title %></h3>
+            <p><%= product.description %></p>
+            <p>Price: $<%= product.price %></p>
+            <!-- Add more product details here as needed -->
+          </div>
+        <% } %>
+      <% }); %>
+    </div>
+  </section>
+  
+  <!-- Groceries section -->
+  <hr>
+  <section class="product-section">
+    <div class="categories">
+      <div class="vl"></div>
+      <h2>Groceries</h2>
+    </div>
+    <div class="product-grid">
+      <% productData.forEach(product => { %>
+        <% if (product.category === 'groceries') { %>
+          <div class="product">
+            <img src="<%= product.thumbnail %>" alt="<%= product.title %>">
+            <h3><%= product.title %></h3>
+            <p><%= product.description %></p>
+            <p>Price: $<%= product.price %></p>
+            <!-- Add more product details here as needed -->
+          </div>
+        <% } %>
+      <% }); %>
+    </div>
+  </section>
+ 
+  </div>
+  <footer>
+    <span>Created By <a href = "">Temirlan</a> | <span class="far fa-copyright"></span> 2024 Temirlan All rights reserved.</span>
+</footer>
+    <!-- Include Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</html>
