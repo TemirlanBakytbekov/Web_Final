@@ -123,7 +123,7 @@ app.post('/login', async (req, res) => {
         const { username, password } = req.body;
         
         // Check if the user is an admin
-        if (username === 'admin' && password === '12345') {
+        if (username === 'Temirlan' && password === '12345') {
             // If admin credentials are correct, redirect to admin page
             res.redirect('/admin');
             return;
